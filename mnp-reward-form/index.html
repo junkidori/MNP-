@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNP報酬計算フォーム</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        h2 { margin-bottom: 20px; }
+        .reward { font-size: 24px; font-weight: bold; color: #007bff; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>MNP報酬計算フォーム</h2>
+        <p class="reward">現在の報酬額: <span id="rewardAmount">10000</span> 円</p>
+        <input type="checkbox" id="toseki" onclick="updateReward()"> 戸籍謄本提出（+5000円）<br>
+        <input type="checkbox" id="rakuten" onclick="updateReward()"> 楽天5回線契約可能（+30000円）<br>
+        <input type="checkbox" id="extraBonus" onclick="updateReward()"> その他特典（+10000円）<br>
+    </div>
+
+    <script>
+        function updateReward() {
+            let baseReward = 10000;
+            let toseki = document.getElementById("toseki").checked ? 5000 : 0;
+            let rakuten = document.getElementById("rakuten").checked ? 30000 : 0;
+            let extraBonus = document.getElementById("extraBonus").checked ? 10000 : 0;
+            let totalReward = baseReward + toseki + rakuten + extraBonus;
+            document.getElementById("rewardAmount").innerText = totalReward;
+        }
+    </script>
+</body>
+</html>
